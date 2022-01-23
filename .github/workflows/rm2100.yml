@@ -65,10 +65,9 @@ jobs:
           sed -i 's/CONFIG_FIRMWARE_INCLUDE_XRAY=n/CONFIG_FIRMWARE_INCLUDE_XRAY=y/' configs/templates/RM2100.config
           fakeroot ./build_firmware_modify RM2100
           mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_xray.trx
-      - name: Upload artifact
-        uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.UPLOAD_KEY }}"
-          prerelease: false
-          files: |
-            /opt/bin/*.trx
+       - name : Upload packages
+      uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: Padavan-packages
+        path: /opt/images
