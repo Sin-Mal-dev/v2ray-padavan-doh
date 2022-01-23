@@ -18,7 +18,7 @@ jobs:
           cd /opt/rt-n56u/toolchain-mipsel
           sh dl_toolchain.sh
           cd /opt/rt-n56u/trunk
-          wget https://raw.githubusercontent.com/felix-fly/v2ray-padavan-doh/master/k2p.config -O configs/templates/K2P.config
+          wget https://raw.githubusercontent.com/felix-fly/v2ray-padavan-doh/master/k2p.config -O configs/templates/RM2100.config
 
           # remove the dnsmasq cache size config
           sed -i 's/fprintf(fp, "cache-size=%d\\n", DNS_RELAY_CACHE_MAX);/\/\/fprintf(fp, "cache-size=%d\\n", DNS_RELAY_CACHE_MAX);/' user/rc/services_ex.c
@@ -34,27 +34,27 @@ jobs:
           wget https://raw.githubusercontent.com/felix-fly/v2ray-padavan-doh/master/padavan/user/Makefile -O user/Makefile
           sed -i '$a\export SSL_CERT_FILE=/usr/lib/cacert.pem' user/scripts/profile
 
-          # Basic for me
-          fakeroot ./build_firmware_modify K2P
-          mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/k2p_me.trx
+          # Basic for X
+          fakeroot ./build_firmware_modify RM2100
+          mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_X.trx
 
           # With v2ray & tproxy for others
           ./clear_tree
           mkdir -p user/v2ray
           wget -P user/v2ray/ https://raw.githubusercontent.com/felix-fly/v2ray-padavan-doh/master/padavan/v2ray/Makefile
           sed -i '/module_smart_load("xt_set", NULL);/amodule_smart_load("xt_TPROXY", NULL);' user/rc/rc.c
-          sed -i 's/CONFIG_FIRMWARE_INCLUDE_V2RAY=n/CONFIG_FIRMWARE_INCLUDE_V2RAY=y/' configs/templates/K2P.config
+          sed -i 's/CONFIG_FIRMWARE_INCLUDE_V2RAY=n/CONFIG_FIRMWARE_INCLUDE_V2RAY=y/' configs/templates/RM2100.config
           fakeroot ./build_firmware_modify K2P
-          mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/k2p_v2ray.trx
+          mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_v2ray.trx
 
           # Use xray instead of v2ray
           ./clear_tree
           mkdir -p user/xray
           wget -P user/xray/ https://raw.githubusercontent.com/felix-fly/v2ray-padavan-doh/master/padavan/xray/Makefile
-          sed -i 's/CONFIG_FIRMWARE_INCLUDE_V2RAY=y/CONFIG_FIRMWARE_INCLUDE_V2RAY=n/' configs/templates/K2P.config
-          sed -i 's/CONFIG_FIRMWARE_INCLUDE_XRAY=n/CONFIG_FIRMWARE_INCLUDE_XRAY=y/' configs/templates/K2P.config
-          fakeroot ./build_firmware_modify K2P
-          mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/k2p_xray.trx
+          sed -i 's/CONFIG_FIRMWARE_INCLUDE_V2RAY=y/CONFIG_FIRMWARE_INCLUDE_V2RAY=n/' configs/templates/RM2100.config
+          sed -i 's/CONFIG_FIRMWARE_INCLUDE_XRAY=n/CONFIG_FIRMWARE_INCLUDE_XRAY=y/' configs/templates/RM2100.config
+          fakeroot ./build_firmware_modify RM2100
+          mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_xray.trx
       - name: Upload artifact
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
