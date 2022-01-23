@@ -41,10 +41,10 @@ jobs:
           wget https://raw.githubusercontent.com/Sin-Mal-dev/v2ray-padavan-doh/master/padavan/user/Makefile -O user/Makefile
           sed -i '$a\export SSL_CERT_FILE=/usr/lib/cacert.pem' user/scripts/profile
           # Basic for X
-          #fakeroot ./build_firmware_modify RM2100
-          #mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_X.trx
+          fakeroot ./build_firmware_modify RM2100
+          mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_X.trx
           # With v2ray & tproxy for others
-          #./clear_tree
+          ./clear_tree
           mkdir -p user/v2ray
           wget -P user/v2ray/ https://raw.githubusercontent.com/Sin-Mal-dev/v2ray-padavan-doh/master/padavan/v2ray/Makefile
           sed -i '/module_smart_load("xt_set", NULL);/amodule_smart_load("xt_TPROXY", NULL);' user/rc/rc.c
@@ -53,13 +53,13 @@ jobs:
           fakeroot ./build_firmware_modify RM2100
           mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_v2ray.trx
           # Use xray instead of v2ray
-          #./clear_tree
-          #mkdir -p user/xray
-          #wget -P user/xray/ https://raw.githubusercontent.com/Sin-Mal-dev/v2ray-padavan-doh/master/padavan/xray/Makefile
-          #sed -i 's/CONFIG_FIRMWARE_INCLUDE_V2RAY=y/CONFIG_FIRMWARE_INCLUDE_V2RAY=n/' configs/templates/RM2100.config
-          #sed -i 's/CONFIG_FIRMWARE_INCLUDE_XRAY=n/CONFIG_FIRMWARE_INCLUDE_XRAY=y/' configs/templates/RM2100.config
-          #fakeroot ./build_firmware_modify RM2100
-          #mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_xray.trx
+          ./clear_tree
+          mkdir -p user/xray
+          wget -P user/xray/ https://raw.githubusercontent.com/Sin-Mal-dev/v2ray-padavan-doh/master/padavan/xray/Makefile
+          sed -i 's/CONFIG_FIRMWARE_INCLUDE_V2RAY=y/CONFIG_FIRMWARE_INCLUDE_V2RAY=n/' configs/templates/RM2100.config
+          sed -i 's/CONFIG_FIRMWARE_INCLUDE_XRAY=n/CONFIG_FIRMWARE_INCLUDE_XRAY=y/' configs/templates/RM2100.config
+          fakeroot ./build_firmware_modify RM2100
+          mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_xray.trx
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
