@@ -1,4 +1,4 @@
-name: Build Padavan
+name: rm2100
 
 on: 
   release:
