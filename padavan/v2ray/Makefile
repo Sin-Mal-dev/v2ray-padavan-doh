@@ -1,5 +1,5 @@
 THISDIR := $(shell pwd)
-V2RAY_URL_BASE := https://github.com/felix-fly/v2ray-openwrt/releases/latest/download/
+V2RAY_URL_BASE := https://github.com/Sin-Mal-dev/v2ray-openwrt/releases/latest/download/
 
 V2RAY_NAME := v2ray-linux-mipsle
 V2RAY_URL := $(V2RAY_URL_BASE)/$(V2RAY_NAME).tar.gz
