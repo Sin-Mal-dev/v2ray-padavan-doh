@@ -40,9 +40,9 @@ jobs:
           wget -P user/smartdns/ https://raw.githubusercontent.com/Sin-Mal-dev/v2ray-padavan-doh/master/padavan/smartdns/Makefile
           wget https://raw.githubusercontent.com/Sin-Mal-dev/v2ray-padavan-doh/master/padavan/user/Makefile -O user/Makefile
           sed -i '$a\export SSL_CERT_FILE=/usr/lib/cacert.pem' user/scripts/profile
-          # Basic for me
+          # Basic for X
           fakeroot ./build_firmware_modify RM2100
-          mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_me.trx
+          mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_X.trx
           # With v2ray & tproxy for others
           ./clear_tree
           mkdir -p user/v2ray
@@ -63,5 +63,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
-          name: build
+          name: Padavan-packages
           path: /opt/bin
