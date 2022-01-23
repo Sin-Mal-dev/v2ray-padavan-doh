@@ -58,7 +58,7 @@ jobs:
           sed -i 's/CONFIG_FIRMWARE_INCLUDE_XRAY=n/CONFIG_FIRMWARE_INCLUDE_XRAY=y/' configs/templates/RM2100.config
           fakeroot ./build_firmware_modify RM2100
           mv /opt/rt-n56u/trunk/images/*.trx /opt/bin/RM2100_xray.trx
-       - name: Upload artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
           name: build
