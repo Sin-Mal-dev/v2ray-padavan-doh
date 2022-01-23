@@ -24,7 +24,7 @@ jobs:
       - name: build
         run: |
           mkdir /opt/bin
-          git clone --depth=1 https://github.com/Sin-Mal-dev/Padavan-KVR.git /opt/rt-n56u
+          git clone --depth=1 https://github.com/Sin-Mal-dev/padavan-4.4.git /opt/rt-n56u
           cd /opt/rt-n56u/toolchain-mipsel
           sh dl_toolchain.sh
           cd /opt/rt-n56u/trunk
