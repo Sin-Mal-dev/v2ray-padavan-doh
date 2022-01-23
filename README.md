@@ -1,16 +1,16 @@
 # v2ray-padavan-doh
 
-本文为在 k2p 路由器使用 padavan(N56U/改华硕) 固件安装配置 v2ray/xray 的进阶流程，v2ray/xray 一揽子方案（简单）在这里[v2ray-padavan](https://github.com/felix-fly/v2ray-padavan)，本文同时也是建立在此基础上的，有些内容不做过多说明，不明白可以先看一下此文。
+本文为在 RM2100 路由器使用 padavan(N56U/改华硕) 固件安装配置 v2ray/xray 的进阶流程，v2ray/xray 一揽子方案（简单）在这里[v2ray-padavan](https://github.com/felix-fly/v2ray-padavan)，本文同时也是建立在此基础上的，有些内容不做过多说明，不明白可以先看一下此文。
 
 笔者编译的固件为纯净版，release 下可自取，只包含了 smartdns 和 v2ray/xray。
 
-前期 v2ray/xray 是手动安装在 storage 下，现在改为将 v2ray/xray 内置到 padavan 固件中。使用 actions 来构建，笔者使用的是 k2p，如果是 padavan 支持的其它型号的路由，可以参考修改打造你自己的固件。
+前期 v2ray/xray 是手动安装在 storage 下，现在改为将 v2ray/xray 内置到 padavan 固件中。使用 actions 来构建，笔者使用的是 RM2100，如果是 padavan 支持的其它型号的路由，可以参考修改打造你自己的固件。
 
-编译好的纯净版固件可以[在 release 下载](https://github.com/felix-fly/v2ray-padavan-doh/releases)，只包含了 smartdns 和 [v2ray](https://github.com/felix-fly/v2ray-openwrt/releases) / [xray](https://github.com/felix-fly/xray-openwrt/releases)。如需其它插件，可以自行修改 **k2p.config** 文件进行编译。
+编译好的纯净版固件可以[在 release 下载](https://github.com/felix-fly/v2ray-padavan-doh/releases)，只包含了 smartdns 和 [v2ray](https://github.com/felix-fly/v2ray-openwrt/releases) / [xray](https://github.com/felix-fly/xray-openwrt/releases)。如需其它插件，可以自行修改 **RM2100.config** 文件进行编译。
 
-其中 k2p_me.trx 是我之前自己用的，固件只包含了 smartdns，可以配合独立的 v2ray/xray 设备使用（类似旁路由）。
+其中 RM2100_X.trx 是我之前自己用的，固件只包含了 smartdns，可以配合独立的 v2ray/xray 设备使用（类似旁路由）。
 
-**个人目前在用 k2p_xray.trx，很稳定，性能也很强大，有条件的可以挑战一下科学500兆：**
+**个人目前在用 RM2100_xray.trx，很稳定，性能也很强大，有条件的可以挑战一下科学500兆：**
 
 * [榨干 MT7621 极限性能，科学跑满500兆有木有可能](https://itcao.com/2021/08232231.html)
 
